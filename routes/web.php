@@ -49,6 +49,7 @@ Route::get('qb/get', function () {
 
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/new', 'ProductController@create')->name('products.create');
-Route::get('products/edit/{id}', 'ProductController@edit')->name('products.edit');
-Route::post('products/update', 'ProductController@update')->name('products.update');
 Route::post('products/store', 'ProductController@store')->name('products.store');
+Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit');
+Route::put('products/{id}/edit', 'ProductController@update')->name('products.update');
+Route::get('products/{id}/delete', 'ProductController@destroy')->name('products.destroy');

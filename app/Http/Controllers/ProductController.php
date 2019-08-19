@@ -35,10 +35,9 @@ class ProductController extends Controller
         return view('layouts.products.edit', compact('product'));
     }
 
-    public function update(ProductRequest $request)
+    public function update($id, ProductRequest $request)
     {
-        dd(12323);
-        $product = Product::find($request->id);
+        $product = Product::find($id);
         $product->name = $request->name;
         $product->quantity = $request->quantity;
         $product->save();
@@ -46,6 +45,11 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
+    public function destroy($id)
+    {
+        Product::destroy($id);
+        return back()->with('success', 'Xóa dữ liệu thành công');
+    }
 
     private function getProducts()
     {
